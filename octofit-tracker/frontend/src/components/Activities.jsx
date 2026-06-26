@@ -1,9 +1,12 @@
 import { useEffect, useState } from 'react';
-import { getApiBaseUrl, normalizeItems } from '../api';
+import { normalizeItems } from '../api';
 
 function Activities() {
   const [activities, setActivities] = useState([]);
-  const endpoint = '/api/activities/';
+  const codespaceName = import.meta.env.VITE_CODESPACE_NAME?.trim();
+  const endpoint = codespaceName
+    ? `https://${codespaceName}-8000.app.github.dev/api/activities/`
+    : 'http://localhost:8000/api/activities/';
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
 
@@ -12,7 +15,7 @@ function Activities() {
 
     const loadActivities = async () => {
       try {
-        const response = await fetch(`${getApiBaseUrl()}${endpoint}`);
+        const response = await fetch(endpoint);
         if (!response.ok) {
           throw new Error('Unable to load activities');
         }

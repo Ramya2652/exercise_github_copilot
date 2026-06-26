@@ -1,9 +1,12 @@
 import { useEffect, useState } from 'react';
-import { getApiBaseUrl, normalizeItems } from '../api';
+import { normalizeItems } from '../api';
 
 function Leaderboard() {
   const [entries, setEntries] = useState([]);
-  const endpoint = '/api/leaderboard/';
+  const codespaceName = import.meta.env.VITE_CODESPACE_NAME?.trim();
+  const endpoint = codespaceName
+    ? `https://${codespaceName}-8000.app.github.dev/api/leaderboard/`
+    : 'http://localhost:8000/api/leaderboard/';
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
 
@@ -12,7 +15,7 @@ function Leaderboard() {
 
     const loadLeaderboard = async () => {
       try {
-        const response = await fetch(`${getApiBaseUrl()}${endpoint}`);
+        const response = await fetch(endpoint);
         if (!response.ok) {
           throw new Error('Unable to load leaderboard');
         }
