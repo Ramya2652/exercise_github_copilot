@@ -6,7 +6,7 @@ import {
   User,
   Workout,
 } from '../models';
-import { connectToDatabase } from '../database';
+import { connectToDatabase } from '../config/database';
 
 // Seed the octofit_db database with test data
 const seedDatabase = async () => {

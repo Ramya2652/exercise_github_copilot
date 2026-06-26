@@ -5,7 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = __importDefault(require("mongoose"));
 const models_1 = require("../models");
-const database_1 = require("../database");
+const database_1 = require("../config/database");
 // Seed the octofit_db database with test data
 const seedDatabase = async () => {
     await (0, database_1.connectToDatabase)();

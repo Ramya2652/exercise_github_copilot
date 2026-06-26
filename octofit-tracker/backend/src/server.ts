@@ -7,7 +7,7 @@ import {
   User,
   Workout,
 } from './models';
-import { connectToDatabase } from './database';
+import { connectToDatabase } from './config/database';
 
 const modelMap: Record<string, mongoose.Model<any>> = {
   users: User,
