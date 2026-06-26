@@ -57,7 +57,7 @@ app.use('/api/leaderboard', createRouter('leaderboard'));
 app.use('/api/workouts', createRouter('workouts'));
 const startServer = async () => {
     try {
-        await mongoose_1.default.connect(process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/octofit_db');
+        await mongoose_1.default.connect(process.env.MONGO_URI || 'mongodb://localhost:27017/octofit_db');
         console.log('Connected to MongoDB');
     }
     catch (error) {

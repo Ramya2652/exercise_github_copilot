@@ -9,7 +9,7 @@ import {
 
 // Seed the octofit_db database with test data
 const seedDatabase = async () => {
-  const uri = process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/octofit_db';
+  const uri = process.env.MONGO_URI || 'mongodb://localhost:27017/octofit_db';
 
   await mongoose.connect(uri);
   console.log('Connected to MongoDB for seeding');
